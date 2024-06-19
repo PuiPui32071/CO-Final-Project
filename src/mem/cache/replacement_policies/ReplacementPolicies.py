@@ -87,6 +87,8 @@ class BRRIPRP(BaseReplacementPolicy):
 class RRIPRP(BRRIPRP):
     btp = 0
 
-class NRURP(BRRIPRP):
-    btp = 0
-    max_RRPV = 1
+class PLRURP(BaseReplacementPolicy):
+    type = 'PLRURP'
+    cxx_class = 'PLRURP'
+    cxx_header = "mem/cache/replacement_policies/plru_rp.hh"
+    num_ways = Param.Int(2, "Number of ways in the cache")
