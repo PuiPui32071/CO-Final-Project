@@ -80,7 +80,12 @@ class L3Cache(Cache):
     mshrs = 20
     tgts_per_mshr = 12
     write_buffers = 8
-    replacement_policy = Param.BaseReplacementPolicy(PLRURP(), "Replacement policy")
+    # replacement_policy = Param.BaseReplacementPolicy(PLRURP(), "Replacement policy")
+    
+    def __init__(self, **kwargs):
+        super(L3Cache, self).__init__(**kwargs)
+        self.replacement_policy = PLRURP(num_ways=self.assoc)
+    
 
 class IOCache(Cache):
     assoc = 8
